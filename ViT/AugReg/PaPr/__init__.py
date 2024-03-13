@@ -1,0 +1,1 @@
+from .model import create_class_token_ViT_model
