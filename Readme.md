@@ -19,7 +19,7 @@ PaPr leverages the pretrained lightweight ConvNets to extract precise patch mask
 
 ## Getting Started
 
-### Simple Implementation of PaPr
+### Sample Implementation of PaPr
 PaPr is easy to implement with few lines of codes. Below is a sample PaPr code for patch reduction in ViT.
 
 ```python
