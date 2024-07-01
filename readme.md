@@ -75,6 +75,6 @@ If you find this work useful, please consider citing our paper:
 ```
 
 ## Contributors
-<a href="https://github.com/enyac-group/T-VSL/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=enyac-group/T-VSL" />
+<a href="https://github.com/tanvir-utexas/PaPr/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=tanvir-utexas/PaPr" />
 </a>
