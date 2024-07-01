@@ -8,19 +8,68 @@
   <img width="90%" alt="PaPr Illustration" src="./assets/teaser.png">
 </div>
 
+## Extracting Patch Mask with Pretrained Lightweight ConvNets
+PaPr leverages the pretrained lightweight ConvNets to extract precise patch masks with minimal operations. This allows both accurate, fast, and seamless batch operations, and hence, ultra-lightweight ConvNets can drive large off-the-shelf ViTs on most salient patches to speed-up operations, without additional training.
 
-## Hierarchical Models
+<div align="center">
+  <img width="90%" alt="PaPr Illustration" src="./assets/papr.png">
+</div>
+
+
+## Getting Started
+
+### Hierarchical Models
 
 We apply PaPr on various version ConvNext CNN and hierarchical Swin transformers. Please follow the [Hierarchical](./Hierarchical/) folder for more details.
 
-## ViT Models
+### ViT Models
 
 We apply PaPr on several ViT architectures with various pre-training methods, such as supervised Augreg (see [ViT/AugReg](./ViT/AugReg/)), class-token free ViTs (see [ViT/CTFree](./ViT/CTFree/)), and self-supervised MAEs (see [ViT/MAE](./ViT/MAE/)). Please follow the respective folder for more details.
 
-## VideoMAE Models
+### VideoMAE Models
 
 We apply PaPr on VideoMAE models in Kinetics400 evaluation. Please follow the [VideoMAE](./VideoMAE/) folder for more details.
 
+## Simple Implementation of PaPr
+
+```python
+def apply_papr(x: torch.tensor, f: torch.tensor, z: float) -> torch.tensor:
+  """
+      x: input ViT tokens of size (batch, N, c)
+      f: proposal ConvNet features of size (batch, K, h, w)
+      z: keeping ratio for tokens
+  """  
+  b, n, c = x.shape
+  h1 = w1 = numpy.sqrt(n-1) # spatial resolution of tokens
+  nt = int(n*z) # total remaining tokens after pruning
+
+  # extract discriminative feature map from proposal features
+  Fd = f.mean(dim=1) # size (batch, h, w)
+  
+  # upsampling F to match patch token spatial resolution in x
+  # it generates Patch Significance Map (P)
+  import torch.nn.functional as F
+  P = F.interpolate(Fd, size=(h1, w1), mode="bicubic") 
+  P = P.view(b, -1) # reshaping for pruning mask extraction
+
+  # extracting indices of the most significant patches
+  patch_indices = P.argsort(dim=1, descending=True)[:, :nt] 
+
+  patch_indices += 1 # adjusting indices for class tokens
+
+  # preparing class indices for each sample
+  class_indices = torch.zeros(b, 1).to(patch_indices.device)
+
+  # Patch mask is obtained combining class and patch indices
+  M = torch.cat([class_indices, patch_indices], dim=1)
+  
+  # extracting tokens based on patch mask
+  x = x.gather(dim=1, index=M.unsqueeze(-1).expand(b, -1, c))
+
+  # pruned x tensor size (batch, nt, c)
+  return x
+
+```
 
 ## PaPr with Existing Patch Reduction Methods
 
