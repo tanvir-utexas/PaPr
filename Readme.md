@@ -2,13 +2,12 @@
 
 [Tanvir Mahmud](https://sites.google.com/view/tanvirmahmud), [Burhaneddin Yaman](https://www.linkedin.com/in/burhan-yaman-12139293/), [Chun-Hao Liu](https://www.linkedin.com/in/chun-hao-liu-b4b6185b/), [Diana Marculescu](https://www.ece.utexas.edu/people/faculty/diana-marculescu) <br>
 
- We introduce PaPr, a method for substantially pruning redundant patches with minimal accuracy loss using lightweight ConvNets across a variety of deep learning architectures, including ViTs, ConvNets, and hybrid transformers, without any re-training. 
+ We introduce PaPr, a method for substantially pruning redundant patches with minimal accuracy loss using lightweight ConvNets across a variety of deep learning architectures, including ViTs, ConvNets, and hybrid transformers, without any re-training. PaPr directly prunes redundant patches early in the network by leveraging pretrained lightweight ConvNets  and directly speeds-up off-the-shelf models without re-training.
 
 <div align="center">
   <img width="90%" alt="PaPr Illustration" src="./assets/teaser.png">
 </div>
 
-Existing patch pruning methods gradually reduce patches over the model. This requires additional training of mask generators in intermediate layers. (b) Proposed PaPr directly prunes redundant patches early in the network by leveraging pretrained lightweight ConvNets  and directly speeds-up \textit{off-the-shelf} models without re-training.
 
 ## Extracting Patch Mask with Pretrained Lightweight ConvNets
 PaPr leverages the pretrained lightweight ConvNets to extract precise patch masks with minimal operations. This allows both accurate, fast, and seamless batch operations, and hence, ultra-lightweight ConvNets can drive large off-the-shelf ViTs on most salient patches to speed-up operations, without additional training.
