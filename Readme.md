@@ -18,6 +18,8 @@ PaPr leverages the pretrained lightweight ConvNets to extract precise patch mask
 
 ## Getting Started
 
+We apply PaPr in various architectures in image and video recognition tasks. Please follow the respective folders to setup the data and environment.
+
 ### Hierarchical Models
 
 We apply PaPr on various version ConvNext CNN and hierarchical Swin transformers. Please follow the [Hierarchical](./Hierarchical/) folder for more details.
