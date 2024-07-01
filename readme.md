@@ -1,4 +1,4 @@
-# PaPr: Training-Free One-Step Patch Pruning with Lightweight ConvNets for Faster Inference (ECCV 2024)
+# [PaPr: Training-Free One-Step Patch Pruning with Lightweight ConvNets for Faster Inference (ECCV 2024)](https://arxiv.org/abs/2403.16020) 
 
 [Tanvir Mahmud](https://sites.google.com/view/tanvirmahmud), [Burhaneddin Yaman](https://www.linkedin.com/in/burhan-yaman-12139293/), [Chun-Hao Liu](https://www.linkedin.com/in/chun-hao-liu-b4b6185b/), [Diana Marculescu](https://www.ece.utexas.edu/people/faculty/diana-marculescu) <br>
 
