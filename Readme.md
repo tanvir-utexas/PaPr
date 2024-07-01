@@ -20,9 +20,11 @@ PaPr leverages the pretrained lightweight ConvNets to extract precise patch mask
 ## Getting Started
 
 ### Simple Implementation of PaPr
-PaPr is easy to implement with few lines of codes. Below is a sample PaPr implementation for patch reduction in ViT.
+PaPr is easy to implement with few lines of codes. Below is a sample PaPr code for patch reduction in ViT.
 
 ```python
+import torch.nn.functional as F
+
 def apply_papr(x: torch.tensor, f: torch.tensor, z: float) -> torch.tensor:
   """
       x: input ViT tokens of size (batch, N, c)
@@ -38,7 +40,6 @@ def apply_papr(x: torch.tensor, f: torch.tensor, z: float) -> torch.tensor:
   
   # upsampling F to match patch token spatial resolution in x
   # it generates Patch Significance Map (P)
-  import torch.nn.functional as F
   P = F.interpolate(Fd, size=(h1, w1), mode="bicubic") 
   P = P.view(b, -1) # reshaping for pruning mask extraction
 
@@ -78,8 +79,7 @@ We apply PaPr on VideoMAE models in Kinetics400 evaluation. Please follow the [V
 
 ## PaPr with Existing Patch Reduction Methods
 
-PaPr can be integrated with state-of-the-art patch reduction methods, such as [ToMe](https://arxiv.org/abs/2210.09461). We use the Augreg pretrained ViT-B-16 architecture as the baseline. We sweep token merging ratio (r) for different pruning ratio (z). Integration of PaPr achieves Pareto-optimal performance, thus, PaPr can enhance existing patch reduction methods.
-
+PaPr can be integrated with state-of-the-art patch reduction methods, such as [ToMe](https://arxiv.org/abs/2210.09461). We use the Augreg pretrained ViT-B-16 architecture as the baseline. We sweep token merging ratio (r) for different pruning ratio (z). Integration of PaPr achieves Pareto-optimal performance. 
 <div align="center">
   <img width="70%" alt="CAM Comparison" src="./assets/tome_with_papr.png">
 </div>
