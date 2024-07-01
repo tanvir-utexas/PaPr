@@ -27,7 +27,7 @@ We apply PaPr on VideoMAE models in Kinetics400 evaluation. Please follow the [V
 PaPr can be integrated with state-of-the-art patch reduction methods, such as [ToMe](https://arxiv.org/abs/2210.09461). We use the Augreg pretrained ViT-B-16 architecture as the baseline. We sweep token merging ratio (r) for different pruning ratio (z). Integration of PaPr achieves Pareto-optimal performance, thus, PaPr can enhance existing patch reduction methods.
 
 <div align="center">
-  <img width="50%" alt="CAM Comparison" src="./assets/tome_with_papr.png">
+  <img width="70%" alt="CAM Comparison" src="./assets/tome_with_papr.png">
 </div>
 
 
@@ -36,7 +36,7 @@ PaPr can be integrated with state-of-the-art patch reduction methods, such as [T
 PaPr can perform even when the ConvNet proposal confidence (c) is very low. In contrast, existing CAM based methods fail in such cases, despite being significantly slower while not enabling batch processing and use of gradients in some cases. Moreover, PaPr can even enhance the ViT confidence in several challenging scenarios by removing redundant patches.
 
 <div align="center">
-  <img width="80%" alt="CAM Comparison" src="./assets/cam_vs_ours.png">
+  <img width="90%" alt="CAM Comparison" src="./assets/cam_vs_ours.png">
 </div>
 
 ## Video Patch Pruning
@@ -44,7 +44,7 @@ PaPr can perform even when the ConvNet proposal confidence (c) is very low. In c
 Video has inherent high sparsity. PaPr effectively localizes the discriminative regions for using holistic spatio-temporal understanding with small ConvNets. Thus, it significantly reduces the computational burden for larger models in downstream video recognition tasks.
 
 <div align="center">
-  <img width="60%" alt="Video Illustration" src="./assets/video_vis.png">
+  <img width="90%" alt="Video Illustration" src="./assets/video_vis.png">
 </div>
 
 
