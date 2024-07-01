@@ -20,7 +20,7 @@ PaPr leverages the pretrained lightweight ConvNets to extract precise patch mask
 ## Getting Started
 
 ### Simple Implementation of PaPr
-PaPr is easy to implement with few lines of codes. Here is a simple implementation for patch token redution in ViT by applying PaPr.
+PaPr is easy to implement with few lines of codes. Below is a sample PaPr implementation for patch reduction in ViT.
 
 ```python
 def apply_papr(x: torch.tensor, f: torch.tensor, z: float) -> torch.tensor:
