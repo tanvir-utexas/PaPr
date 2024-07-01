@@ -19,21 +19,8 @@ PaPr leverages the pretrained lightweight ConvNets to extract precise patch mask
 
 ## Getting Started
 
-We apply PaPr in various architectures in image and video recognition tasks. Please follow the respective folders to setup the data and environment.
-
-### Hierarchical Models
-
-We apply PaPr on various version ConvNext CNN and hierarchical Swin transformers. Please follow the [Hierarchical](./Hierarchical/) folder for more details.
-
-### ViT Models
-
-We apply PaPr on several ViT architectures with various pre-training methods, such as supervised Augreg (see [ViT/AugReg](./ViT/AugReg/)), class-token free ViTs (see [ViT/CTFree](./ViT/CTFree/)), and self-supervised MAEs (see [ViT/MAE](./ViT/MAE/)). Please follow the respective folder for more details.
-
-### VideoMAE Models
-
-We apply PaPr on VideoMAE models in Kinetics400 evaluation. Please follow the [VideoMAE](./VideoMAE/) folder for more details.
-
-## Simple Implementation of PaPr
+### Simple Implementation of PaPr
+PaPr is easy to implement with few lines of codes. Here is a simple implementation for patch redution in ViT with PaPr.
 
 ```python
 def apply_papr(x: torch.tensor, f: torch.tensor, z: float) -> torch.tensor:
@@ -73,6 +60,21 @@ def apply_papr(x: torch.tensor, f: torch.tensor, z: float) -> torch.tensor:
   return x
 
 ```
+
+We apply PaPr in various architectures in image and video recognition tasks. Please follow the respective folders to setup the data and environment.
+
+### Hierarchical Models
+
+We apply PaPr on various version ConvNext CNN and hierarchical Swin transformers. Please follow the [Hierarchical](./Hierarchical/) folder for more details.
+
+### ViT Models
+
+We apply PaPr on several ViT architectures with various pre-training methods, such as supervised Augreg (see [ViT/AugReg](./ViT/AugReg/)), class-token free ViTs (see [ViT/CTFree](./ViT/CTFree/)), and self-supervised MAEs (see [ViT/MAE](./ViT/MAE/)). Please follow the respective folder for more details.
+
+### VideoMAE Models
+
+We apply PaPr on VideoMAE models in Kinetics400 evaluation. Please follow the [VideoMAE](./VideoMAE/) folder for more details.
+
 
 ## PaPr with Existing Patch Reduction Methods
 
